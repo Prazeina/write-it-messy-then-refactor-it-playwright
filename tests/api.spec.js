@@ -10,6 +10,16 @@ test ('Get post', async({ apiContext }) => {
     expect(body.id).toBe(1)
     expect(body.title).toBe('sunt aut facere repellat provident occaecati excepturi optio reprehenderit')
     expect(body.title).toEqual(expect.any(String))
+
+    // Schema / Shape Validation
+    expect(body).toMatchObject({
+        id: 1,
+        userId: 1
+    })
+    expect(body).toEqual(expect.objectContaining({           
+        id: expect.any(Number),
+        title: expect.any(String),
+    }))
 })
 
 test ('Post new thread', async({ apiContext }) => {
