@@ -16,7 +16,22 @@ export const test = base.extend({
         await use(ctx);
         await ctx.dispose();
     },
-    {scope: 'worker'}]
+    {scope: 'worker'}],
+
+    seededPosts:  async({ apiContext }, use) => {
+        const res = await apiContext.post('/posts', {
+            data: {
+                title: 'seeded',
+                body: 'hybrid',
+                userId: 1
+            }
+        })
+        const post = await res.json()
+
+        await use(post)
+
+        await apiContext.delete(`/posts/${post.id}`)
+    }
 })
 
 export const expect = test.expect;

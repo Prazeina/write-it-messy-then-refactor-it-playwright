@@ -1,5 +1,12 @@
 import { test, expect } from '../fixtures/test.js'
 
+
+//  Test using SeededPost
+
+test('Seeded Post', async({ seededPosts }) => {
+    expect(seededPosts.id).toBeDefined()
+    expect(seededPosts.title).toBe('seeded')
+})
 // With Fixtures
 // Real API test (Integration Test)
 test ('Get post', async({ apiContext }) => {
