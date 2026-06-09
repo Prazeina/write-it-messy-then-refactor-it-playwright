@@ -20,7 +20,7 @@ for (const user of users){
 }
 
 // Without using fixtures
-test('Valid login credential', async({page}) => {
+test('Valid login credential - w/o fixtures', async({page}) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto()
 
@@ -33,7 +33,7 @@ test('Valid login credential', async({page}) => {
     await expect(page.getByRole('link', {name: 'Log out'})).toBeVisible()
 })
 
-test('Invalid login credential', async({page}) => {
+test('Invalid login credential - w/o fixtures', async({page}) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto()
 
